@@ -1,0 +1,12 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          aad:
+            client-id: d802948a-9055-4f6d-a000-9a118f4a684b
+            client-secret: vez8Q~VdOvzZgCmtUET6VC9cLfwYhXpgIAsJUanp
+            scope:  openid+profile+email
+        provider:
+          aad:
+            issuer-uri: https://login.microsoftonline.com/4658ecba-7811-4068-8e00-7b05d3733f71/v2.0

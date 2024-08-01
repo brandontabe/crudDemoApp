@@ -1,0 +1,95 @@
+#openapi: 3.0.3
+#info:
+#  title: Employee Retrieval
+#  description: Retrieve Employee data
+#  version: 1.0.0
+#servers:
+#  - url: localhost:8080/api/v1/getEmployeebyId/
+#tags:
+#  - name: EmployeeRetrieval
+#paths:
+#  /search/{id}:
+#    get:
+#      summary: get employee
+#      operationId: employeeSearch
+#      security:
+#        - basicAuth: [ ]
+#      tags:
+#        - EmployeeSearch
+#      parameters:
+#        - name: id
+#          in: path
+#          required: true
+#          schema:
+#            type: string
+#      responses:
+#        '200':
+#          description: OK - returns the employees found
+#          content:
+#            application/json:
+#              schema:
+#                $ref: '#/components/schemas/EmployeeSearchResponse'
+#        '400':
+#          description: Bad Request - Parameter and/or parameter values are invalid
+#          content:
+#            application/json:
+#              schema:
+#                $ref: '../common/CommonModel.yaml#/components/schemas/ErrorType'
+#        '401':
+#          description: Forbidden - Incorrect credentials supplied
+#          content:
+#            application/json:
+#              schema:
+#                $ref: '../common/CommonModel.yaml#/components/schemas/ErrorType'
+#        '403':
+#          description: Authorization required - Not authorized to use this service
+#          content:
+#            application/json:
+#              schema:
+#                $ref: '../common/CommonModel.yaml#/components/schemas/ErrorType'
+#        '405':
+#          description: Method not allowed
+#          content:
+#            application/json:
+#              schema:
+#                $ref: '../common/CommonModel.yaml#/components/schemas/ErrorType'
+#        '500':
+#          description: Internal server error
+#          content:
+#            application/json:
+#              schema:
+#                $ref: '../common/CommonModel.yaml#/components/schemas/ErrorType'
+#        '503':
+#          description: Service unavailable
+#          content:
+#            application/json:
+#              schema:
+#                $ref: '../common/CommonModel.yaml#/components/schemas/ErrorType'
+#components:
+#  schemas:
+#    EmployeeSearchResponse:
+#      properties:
+#        data:
+#          $ref: '#/components/schemas/EmployeeSearchResult'
+#        error:
+#          $ref: '../common/CommonModel.yaml/#/components/schemas/ErrorResponse'
+#    EmployeeSearchResult:
+#      properties:
+#        result:
+#          type: object
+#          items:
+#            $ref: '#/components/schemas/EmployeeSearchProfile'
+#        metaData:
+#          $ref: '#/components/schemas/MetaData'
+#    EmployeeSearchProfile:
+#      properties:
+#        employeeId:
+#          type: integer
+#          format: int32
+#        lookupName:
+#          type: string
+#        cluster:
+#          type: string
+#
+#
+#
